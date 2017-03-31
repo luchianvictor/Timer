@@ -4,30 +4,18 @@ var ReactDOM = require('react-dom');
 var ToDoList = require('./components/ToDoList');
 var AddToDo = require('./components/AddToDo')
 var ToDoSearch = require('./components/ToDoSearch');
+var TodoAPI = require('../api/TodoAPI');
 
 var ToDoApp = React.createClass({
   getInitialState: function() {
     return {
       showCompleted: false,
       searchText: "",
-      todos: [
-        {
-          id: 1,
-          text:"hai noroc",
-          completed: false
-        },
-        {
-          id:2,
-          text:"salucea",
-          completed: false
-        },
-        {
-          id:3,
-          text:"ba uratule",
-          completed: true
-        }
-      ]
+      todos: TodoAPI.getTodos()
     };
+  },
+  componentDidUpdate: function() {
+    TodoAPI.setTodos(this.state.todos);
   },
   handleToggle: function(id) {
     var updatedTodos = this.state.todos.map(function(todo) {
@@ -58,12 +46,13 @@ var ToDoApp = React.createClass({
     })
   },
   render: function() {
-    var {todos} = this.state;
+    var {todos,showCompleted,searchText} = this.state;
+    var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
     return (
       <div>
         <ToDoSearch onSearch={this.handleOnSearch} />
 
-        <ToDoList todos={todos} onToggle={this.handleToggle}/>
+        <ToDoList todos={filteredTodos} onToggle={this.handleToggle}/>
         <AddToDo handleAddTodo={this.handleAddTodo} />
       </div>
     );
