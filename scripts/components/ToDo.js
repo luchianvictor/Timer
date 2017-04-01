@@ -7,9 +7,9 @@ var ToDo = React.createClass({
     var todoClassName = completed ? 'todo todo-completed' : 'todo';
     return (
       <div>
-        {text}<input type="checkbox" checked={completed} onChange={() => {
+        <input type="checkbox" checked={completed} onChange={() => {
             this.props.onToggle(id);
-          }}/>
+          }}/>{text}
       </div>
 
     );
