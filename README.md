@@ -5,9 +5,10 @@
 Feel free to hop in and solve some tasks with me
 
 A working link will be provided for you soon. Untill then, download it and run it with these commands
+```
     npm install
     gulp
-
+```
 to do :
  - [ ] a method to delete a to-do
  - [ ] style the app with bootstrap
