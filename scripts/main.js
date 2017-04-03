@@ -28,6 +28,17 @@ var ToDoApp = React.createClass({
       todos:updatedTodos
     })
   },
+  removeItem: function(id) {
+    console.log(id);
+    var updatedTodos = this.state.todos.filter(function(todo) {
+      if (todo.id !== id) {
+        return todo;
+      }
+    });
+     this.setState({
+      todos:updatedTodos
+    })
+  },
   handleAddTodo: function(todo) {
     var item = {};
     item.id = (new Date()).getTime();
@@ -53,7 +64,7 @@ var ToDoApp = React.createClass({
         <h1>Todo app</h1>
         <ToDoSearch onSearch={this.handleSearch} />
 
-        <ToDoList todos={filteredTodos} onToggle={this.handleToggle}/>
+        <ToDoList todos={filteredTodos} onToggle={this.handleToggle} removeItem={this.removeItem} />
         <AddToDo handleAddTodo={this.handleAddTodo} />
       </div>
     );

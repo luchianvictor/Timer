@@ -12,7 +12,7 @@ var ToDoList = React.createClass({
         );
       }
       return todos.map((todo) => {
-        return <ToDo key={todo.id} {...todo} onToggle={this.props.onToggle}/>
+        return <ToDo key={todo.id} {...todo} onToggle={this.props.onToggle}  onClick={this.props.removeItem}/>
       })
     };
     return (
