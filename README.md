@@ -10,7 +10,7 @@ A working link will be provided for you soon. Untill then, download it and run i
     gulp
 ```
 to do :
- - [ ] a method to delete a to-do
+ - [X] a method to delete a to-do
  - [ ] style the app with bootstrap
  - [ ] do automatic tests
  - [ ] include todos in folders, make the app able to add folders of to-dos
